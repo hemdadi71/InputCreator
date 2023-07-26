@@ -1,4 +1,3 @@
-
 import dbConnect from '@/lib/dbConenct'
 import InputModel from '@/server/models/InputModel'
 
@@ -28,7 +27,7 @@ export default async function handler(req, res) {
         res.status(200).json({ success: true, Inputs })
       } catch (error) {
         res
-          .status(400)
+          .status(500)
           .json({ success: false, error: 'Failed to fetch Inputs' })
       }
       break

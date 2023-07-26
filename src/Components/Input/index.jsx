@@ -1,9 +1,12 @@
 import React from 'react'
 
-function Input() {
+function Input({ label, type }) {
   return (
     <>
-      <div>Input</div>
+      <div className='flex gap-4 items-center border-b py-2'>
+        <label htmlFor="input">{label}</label>
+        <input type={type} />
+      </div>
     </>
   )
 }
