@@ -9,15 +9,11 @@ import { useQuery } from 'react-query'
 const initialState = [
   {
     lable: 'TextBox',
-    // disable: false,
-    // required: false,
     type: 'text',
   },
   {
     lable: 'CheckBox',
     type: 'checkBox',
-    // disable: false,
-    // required: false,
   },
   {
     lable: 'ComboBox',
@@ -25,14 +21,22 @@ const initialState = [
   {
     lable: 'File Upload',
     type: 'file',
-    // disable: false,
-    // required: false,
   },
   {
     lable: 'Radio Button',
     type: 'radio',
-    // disable: false,
-    // required: false,
+  },
+  {
+    lable: 'Color Picker',
+    type: 'color',
+  },
+  {
+    lable: 'Range',
+    type: 'range',
+  },
+  {
+    lable: 'Date',
+    type: 'date',
   },
 ]
 export default function Home() {
@@ -70,7 +74,7 @@ export default function Home() {
           <div className="bg-gray-400 py-2 text-lg px-4 font-semibold text-white">
             <p>Properties</p>
           </div>
-          {/* <Table /> */}
+          <Table />
         </div>
       </div>
     </>

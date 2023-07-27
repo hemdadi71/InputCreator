@@ -39,6 +39,7 @@ const Table = () => {
         <DataGrid
           rows={filteredRows}
           columns={columns}
+          hideFooterPagination
           onStateChange={params => {
             let arr = []
             for (const [key, value] of Object.entries(params.editRows)) {
