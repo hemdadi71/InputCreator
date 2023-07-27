@@ -6,10 +6,8 @@ function ToolbarItems({ items }) {
     <>
       <div>
         {items.map(item => {
-          if (item.text !== 'ComboBox') {
-            return (
-              <ToolBarItem key={item.text} text={item.text} type={item.type} />
-            )
+          if (item.lable !== 'ComboBox') {
+            return <ToolBarItem key={item.lable} item={item} />
           }
         })}
       </div>

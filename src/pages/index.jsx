@@ -1,3 +1,6 @@
+import Table from '@/Components/Datagrid'
+import EditableTable from '@/Components/Datagrid'
+import DataGrid from '@/Components/Datagrid'
 import DesignerItems from '@/Components/DesignerItems'
 import ToolbarItems from '@/Components/ToolBarItems'
 import { GetInputs } from '@/api'
@@ -5,23 +8,31 @@ import { useState } from 'react'
 import { useQuery } from 'react-query'
 const initialState = [
   {
-    text: 'TextBox',
+    lable: 'TextBox',
+    // disable: false,
+    // required: false,
     type: 'text',
   },
   {
-    text: 'CheckBox',
+    lable: 'CheckBox',
     type: 'checkBox',
+    // disable: false,
+    // required: false,
   },
   {
-    text: 'ComboBox',
+    lable: 'ComboBox',
   },
   {
-    text: 'File Upload',
+    lable: 'File Upload',
     type: 'file',
+    // disable: false,
+    // required: false,
   },
   {
-    text: 'Radio Button',
+    lable: 'Radio Button',
     type: 'radio',
+    // disable: false,
+    // required: false,
   },
 ]
 export default function Home() {
@@ -29,7 +40,7 @@ export default function Home() {
   const { data, isLoading, error } = useQuery('getInputs', GetInputs)
   return (
     <>
-      <div className="flex h-[100vh]">
+      <div className="flex h-[100vh] overflow-hidden">
         <div className="w-[15%] border-r border-gray-200">
           <div className="bg-gray-400 py-2 text-lg px-4 font-semibold text-white">
             <p>Toolbar</p>
@@ -43,12 +54,15 @@ export default function Home() {
           <div className="p-5 h-[400px] overflow-auto border-b scrollBar-purple">
             <DesignerItems />
           </div>
-          <div>
+          <div className="h-[170px] overflow-y-auto pb-10 p-3">
             {!isLoading &&
               data.Inputs.map(item => (
                 <p
                   key={item._id}
-                  dangerouslySetInnerHTML={{ __html: item.text }}></p>
+                  className="border-b py-1"
+                  dangerouslySetInnerHTML={{
+                    __html: JSON.stringify(item),
+                  }}></p>
               ))}
           </div>
         </div>
@@ -56,6 +70,7 @@ export default function Home() {
           <div className="bg-gray-400 py-2 text-lg px-4 font-semibold text-white">
             <p>Properties</p>
           </div>
+          {/* <Table /> */}
         </div>
       </div>
     </>

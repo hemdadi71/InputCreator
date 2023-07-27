@@ -8,9 +8,12 @@ export default async function handler(req, res) {
   switch (method) {
     case 'POST':
       try {
-        const { text, type } = req.body
+        const { disable, lable, type, required, className } = req.body
         const Inputs = await InputModel.create({
-          text,
+          className,
+          disable,
+          required,
+          lable,
           type,
         })
         res.status(201).json({ success: true, Inputs })

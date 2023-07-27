@@ -6,16 +6,11 @@ import Input from '../Input'
 
 function DesignerItems() {
   const { data, error, isLoading } = useQuery('getInputs', GetInputs)
-  if (!isLoading) {
-    console.log(data)
-  }
   return (
     <>
-      <div dir='rtl' className="grid grid-cols-2 gap-3">
+      <div dir="rtl" className="grid grid-cols-2 gap-3">
         {!isLoading &&
-          data.Inputs.map(item => (
-            <Input key={item._id} label={item.text} type={item.type} />
-          ))}
+          data.Inputs.map(item => <Input key={item._id} item={item} />)}
       </div>
     </>
   )
