@@ -16,9 +16,6 @@ const initialState = [
     type: 'checkBox',
   },
   {
-    lable: 'ComboBox',
-  },
-  {
     lable: 'File Upload',
     type: 'file',
   },
@@ -37,6 +34,14 @@ const initialState = [
   {
     lable: 'Date',
     type: 'date',
+  },
+  {
+    lable: 'Submit',
+    type: 'submit',
+  },
+  {
+    lable: 'reset',
+    type: 'reset',
   },
 ]
 export default function Home() {

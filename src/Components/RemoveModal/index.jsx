@@ -3,7 +3,7 @@ import React from 'react'
 import { AiFillCloseCircle } from 'react-icons/ai'
 import { useMutation, useQueryClient } from 'react-query'
 import Spinner from '../Spinner'
-
+import { motion } from 'framer-motion'
 const RemoveModal = ({ setIsOpen, id }) => {
   const queryClient = useQueryClient()
   const { mutate, isLoading } = useMutation({
@@ -19,7 +19,11 @@ const RemoveModal = ({ setIsOpen, id }) => {
   }
   return (
     <>
-      <div
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        exit={{ opacity: 0 }}
         dir="ltr"
         className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-md w-[15%] flex flex-col gap-2 p-3 z-20">
         <div
@@ -43,10 +47,10 @@ const RemoveModal = ({ setIsOpen, id }) => {
             </button>
           </div>
         </div>
-      </div>
+      </motion.div>
       <div
         onClick={() => setIsOpen(false)}
-        className="absolute bg-black w-full h-full left-0 top-0 bg-opacity-30 z-10"></div>
+        className="absolute bg-black backdrop-blur-sm w-full h-full left-0 top-0 bg-opacity-40 z-10"></div>
     </>
   )
 }
