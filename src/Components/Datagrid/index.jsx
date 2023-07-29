@@ -3,6 +3,7 @@ import { useMutation, useQuery, useQueryClient } from 'react-query'
 import { useSelector } from 'react-redux'
 import { DataGrid } from '@mui/x-data-grid'
 import { GetInputs, updateInput } from '@/api'
+import { toast } from 'react-hot-toast'
 const columns = [
   {
     field: 'name',
@@ -41,11 +42,16 @@ const Table = () => {
     mutationFn: updateInput,
     onSuccess: () => {
       queryClient.invalidateQueries('getInputs')
+      toast('Successfully input edited', {
+        style: {
+          backgroundColor: 'yellow',
+        },
+      })
     },
   })
   return (
     <>
-      <div>
+      <div className="overflow-auto">
         {Object.keys(filteredRows).length ? (
           <DataGrid
             rows={filteredRows}
@@ -57,6 +63,7 @@ const Table = () => {
                 border: 1,
                 borderColor: 'gray',
               },
+              height:'550px'
             }}
             onStateChange={params => {
               let arr = []

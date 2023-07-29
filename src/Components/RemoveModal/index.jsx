@@ -4,6 +4,7 @@ import { AiFillCloseCircle } from 'react-icons/ai'
 import { useMutation, useQueryClient } from 'react-query'
 import Spinner from '../Spinner'
 import { motion } from 'framer-motion'
+import { toast } from 'react-hot-toast'
 const RemoveModal = ({ setIsOpen, id }) => {
   const queryClient = useQueryClient()
   const { mutate, isLoading } = useMutation({
@@ -11,11 +12,16 @@ const RemoveModal = ({ setIsOpen, id }) => {
     onSuccess: () => {
       queryClient.invalidateQueries('getInputs')
       setIsOpen(false)
+      toast('Successfully input removed', {
+        style: {
+          backgroundColor: 'red',
+          color: 'white',
+        },
+      })
     },
   })
   const handleRemoveInput = () => {
     mutate(id)
-    // console.log(id)
   }
   return (
     <>

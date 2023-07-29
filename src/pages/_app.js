@@ -9,6 +9,7 @@ import {
   QueryClientProvider,
 } from 'react-query'
 import { Provider } from 'react-redux'
+import toast, { Toaster } from 'react-hot-toast'
 const queryClient = new QueryClient()
 export default function App({ Component, pageProps }) {
   return (
@@ -16,6 +17,7 @@ export default function App({ Component, pageProps }) {
       <Provider store={store}>
         <QueryClientProvider client={queryClient}>
           <Component {...pageProps} />
+          <Toaster />
         </QueryClientProvider>
       </Provider>
     </>
